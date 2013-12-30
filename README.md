@@ -54,7 +54,7 @@ an ambitious open-source ecommerce solution based on Node.js
     $ npm install
     $ npm start         // development mode by default and invokes nodemon
 
-Add routes (`config/routes.js`), create models (`app/models/`) and controllers (`app/controllers/`).
+Add routes (`config/routes.js`), create models (`api/models/`) and controllers (`api/controllers/`).
 
 ## License
 
