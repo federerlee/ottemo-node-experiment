@@ -1,16 +1,7 @@
+"use strict";
 /**
  * Gruntfile
  *
- * If you created your Sails app with `sails new foo --linker`, 
- * the following files will be automatically injected (in order)
- * into the EJS and HTML files in your `views` and `assets` folders.
- *
- * At the top part of this file, you'll find a few of the most commonly
- * configured options, but Sails' integration with Grunt is also fully
- * customizable.  If you'd like to work with your assets differently 
- * you can change this file to do anything you like!
- *
- * More information on using Grunt to work with static assets:
  * http://gruntjs.com/configuring-tasks
  */
 
