@@ -30,6 +30,7 @@
     "mocha": "latest",
     "nodemon": "latest",
     "should": "latest",
-    "supertest": "latest"
+    "supertest": "latest",
+    "grunt-concurrent": "~0.4.2"
   }
 }

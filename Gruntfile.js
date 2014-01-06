@@ -219,6 +219,15 @@ module.exports = function (grunt) {
       }
     },
 
+    concurrent: {
+      target: {
+        tasks: ['build', 'watch', 'nodemon'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
+    },
+
     nodemon: {
       dev: {
         options: {
@@ -400,11 +409,20 @@ module.exports = function (grunt) {
     }
   });
 
+// use nodemon in development
+  grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-concurrent');
+
   // When Sails is lifted:
   grunt.registerTask('default', [
     'compileAssets',
+    'linkAssets'
+  ]);
+
+  grunt.registerTask('dev', [
+    'compileAssets',
     'linkAssets',
-    'watch'
+    'concurrent'
   ]);
 
   grunt.registerTask('compileAssets', [
@@ -415,9 +433,8 @@ module.exports = function (grunt) {
     'coffee:dev'
   ]);
 
+  // Update link/script/template references in `assets` index.html
   grunt.registerTask('linkAssets', [
-
-    // Update link/script/template references in `assets` index.html
     'sails-linker:devJs',
     'sails-linker:devStyles',
     'sails-linker:devTpl',
@@ -454,8 +471,7 @@ module.exports = function (grunt) {
     'sails-linker:devTplJADE'
   ]);
 
-  // use nodemon in development
-  grunt.loadNpmTasks('grunt-nodemon');
+
   // When API files are changed:
   // grunt.event.on('watch', function(action, filepath) {
   //   grunt.log.writeln(filepath + ' has ' + action);
