@@ -97,6 +97,7 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
   grunt.loadTasks(depsPath + '/grunt-nodemon/tasks');
 
+
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -105,21 +106,21 @@ module.exports = function (grunt) {
       dev: {
         files: [
           {
-          expand: true,
-          cwd: './assets',
-          src: ['**/*.!(coffee)'],
-          dest: '.tmp/public'
-        }
+            expand: true,
+            cwd: './assets',
+            src: ['**/*.!(coffee)'],
+            dest: '.tmp/public'
+          }
         ]
       },
       build: {
         files: [
           {
-          expand: true,
-          cwd: '.tmp/public',
-          src: ['**/*'],
-          dest: 'www'
-        }
+            expand: true,
+            cwd: '.tmp/public',
+            src: ['**/*'],
+            dest: 'www'
+          }
         ]
       }
     },
@@ -149,25 +150,27 @@ module.exports = function (grunt) {
       dev: {
         files: [
           {
-          expand: true,
-          cwd: 'assets/styles/',
-          src: ['*.less'],
-          dest: '.tmp/public/styles/',
-          ext: '.css'
-        }, {
-          expand: true,
-          cwd: 'assets/linker/styles/',
-          src: ['*.less'],
-          dest: '.tmp/public/linker/styles/',
-          ext: '.css'
-        }
+            expand: true,
+            cwd: 'assets/styles/',
+            src: ['*.less'],
+            dest: '.tmp/public/styles/',
+            ext: '.css'
+          }, 
+          {
+            expand: true,
+            cwd: 'assets/linker/styles/',
+            src: ['*.less'],
+            dest: '.tmp/public/linker/styles/',
+            ext: '.css'
+          }
         ]
       }
     },
     
     coffee: {
       dev: {
-        options:{
+        options:
+        {
           bare:true
         },
         files: [
@@ -177,7 +180,8 @@ module.exports = function (grunt) {
             src: ['**/*.coffee'],
             dest: '.tmp/public/js/',
             ext: '.js'
-          }, {
+          }, 
+          {
             expand: true,
             cwd: 'assets/linker/js/',
             src: ['**/*.coffee'],
@@ -185,15 +189,17 @@ module.exports = function (grunt) {
             ext: '.js'
           }
         ]
-      }
-    },
+        }
+      },
 
     concat: {
-      js: {
+      js: 
+      {
         src: jsFilesToInject,
         dest: '.tmp/public/concat/production.js'
       },
-      css: {
+      css: 
+      {
         src: cssFilesToInject,
         dest: '.tmp/public/concat/production.css'
       }
@@ -210,6 +216,25 @@ module.exports = function (grunt) {
       dist: {
         src: ['.tmp/public/concat/production.css'],
         dest: '.tmp/public/min/production.css'
+      }
+    },
+
+    nodemon: {
+      dev: {
+        options: {
+          file: 'app.js',
+          nodeArgs: ['--debug'],
+          ignoredFiles: ['node_modules/**'],
+          watchedExtensions: ['js','json'],
+          env: {
+            PORT: '8000'
+          },
+        }
+      },
+      exec: {
+        options: {
+          exec: 'less'
+        }
       }
     },
 
@@ -429,6 +454,8 @@ module.exports = function (grunt) {
     'sails-linker:devTplJADE'
   ]);
 
+  // use nodemon in development
+  grunt.loadNpmTasks('grunt-nodemon');
   // When API files are changed:
   // grunt.event.on('watch', function(action, filepath) {
   //   grunt.log.writeln(filepath + ' has ' + action);
