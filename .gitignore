@@ -25,6 +25,7 @@ logs
 results
 
 node_modules
+app/components
 www
 
 npm-debug.log
@@ -45,3 +46,4 @@ nbproject
 # local config
 ########################
 config/local.js
+.sass-cache/
