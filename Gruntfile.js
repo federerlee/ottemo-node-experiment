@@ -13,8 +13,8 @@ module.exports = function (grunt) {
    * (uses Grunt-style wildcard/glob/splat expressions)
    *
    * By default, Sails also supports LESS in development and production.
-   * To use SASS/SCSS, Stylus, etc., edit the `sails-linker:devStyles` task 
-   * below for more options.  For this to work, you may need to install new 
+   * To use SASS/SCSS, Stylus, etc., edit the `sails-linker:devStyles` task
+   * below for more options.  For this to work, you may need to install new
    * dependencies, e.g. `npm install grunt-contrib-sass`
    */
 
@@ -27,13 +27,13 @@ module.exports = function (grunt) {
    * Javascript files to inject in order
    * (uses Grunt-style wildcard/glob/splat expressions)
    *
-   * To use client-side CoffeeScript, TypeScript, etc., edit the 
+   * To use client-side CoffeeScript, TypeScript, etc., edit the
    * `sails-linker:devJs` task below for more options.
    */
 
   var jsFilesToInject = [
 
-    // Below, as a demonstration, you'll see the built-in dependencies 
+    // Below, as a demonstration, you'll see the built-in dependencies
     // linked in the proper order order
 
     // Bring in the socket.io client
@@ -57,8 +57,8 @@ module.exports = function (grunt) {
    * Client-side HTML templates are injected using the sources below
    * The ordering of these templates shouldn't matter.
    * (uses Grunt-style wildcard/glob/splat expressions)
-   * 
-   * By default, Sails uses JST templates and precompiles them into 
+   *
+   * By default, Sails uses JST templates and precompiles them into
    * functions for you.  If you want to use jade, handlebars, dust, etc.,
    * edit the relevant sections below.
    */
@@ -72,12 +72,12 @@ module.exports = function (grunt) {
     return '.tmp/public/' + path;
   });
 
-  // Modify js file injection paths to use 
+  // Modify js file injection paths to use
   jsFilesToInject = jsFilesToInject.map(function (path) {
     return '.tmp/public/' + path;
   });
-  
-  
+
+
   templateFilesToInject = templateFilesToInject.map(function (path) {
     return 'assets/' + path;
   });
@@ -155,7 +155,7 @@ module.exports = function (grunt) {
             src: ['*.less'],
             dest: '.tmp/public/styles/',
             ext: '.css'
-          }, 
+          },
           {
             expand: true,
             cwd: 'assets/linker/styles/',
@@ -166,7 +166,7 @@ module.exports = function (grunt) {
         ]
       }
     },
-    
+
     coffee: {
       dev: {
         options:
@@ -180,7 +180,7 @@ module.exports = function (grunt) {
             src: ['**/*.coffee'],
             dest: '.tmp/public/js/',
             ext: '.js'
-          }, 
+          },
           {
             expand: true,
             cwd: 'assets/linker/js/',
@@ -193,12 +193,12 @@ module.exports = function (grunt) {
       },
 
     concat: {
-      js: 
+      js:
       {
         src: jsFilesToInject,
         dest: '.tmp/public/concat/production.js'
       },
-      css: 
+      css:
       {
         src: cssFilesToInject,
         dest: '.tmp/public/concat/production.css'
@@ -219,9 +219,17 @@ module.exports = function (grunt) {
       }
     },
 
+    'node-inspector': {
+      dev: {
+        options: {
+          'debug-port': 5858,
+        }
+      }
+    },
+
     concurrent: {
-      target: {
-        tasks: ['build', 'watch', 'nodemon'],
+      dev: {
+        tasks: ['nodemon', 'node-inspector', 'watch'],
         options: {
           logConcurrentOutput: true
         }
@@ -232,9 +240,8 @@ module.exports = function (grunt) {
       dev: {
         options: {
           file: 'app.js',
-          nodeArgs: ['--debug'],
-          ignoredFiles: ['node_modules/**'],
-          watchedExtensions: ['js','json'],
+          ignoredFiles: ['node_modules/**','.tmp/**','.git/**'],
+          watchedExtensions: ['js','json','jade'],
           env: {
             PORT: '8000'
           },
@@ -412,6 +419,7 @@ module.exports = function (grunt) {
 // use nodemon in development
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-node-inspector');
 
   // When Sails is lifted:
   grunt.registerTask('default', [
@@ -429,7 +437,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
-    'copy:dev',    
+    'copy:dev',
     'coffee:dev'
   ]);
 
