@@ -14,8 +14,8 @@
  * http://gruntjs.com/configuring-tasks
  */
 
-module.exports = function(grunt) {
-
+module.exports = function (grunt) {
+  /*jshint onevar: false*/
 
 
   /**
@@ -78,7 +78,6 @@ module.exports = function(grunt) {
   ];
 
 
-
   /////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////
@@ -106,17 +105,17 @@ module.exports = function(grunt) {
   /////////////////////////////////////////////////////////////////
 
   // Modify css file injection paths to use
-  cssFilesToInject = cssFilesToInject.map(function(path) {
+  cssFilesToInject = cssFilesToInject.map(function (path) {
     return '.tmp/public/' + path;
   });
 
   // Modify js file injection paths to use
-  jsFilesToInject = jsFilesToInject.map(function(path) {
+  jsFilesToInject = jsFilesToInject.map(function (path) {
     return '.tmp/public/' + path;
   });
 
 
-  templateFilesToInject = templateFilesToInject.map(function(path) {
+  templateFilesToInject = templateFilesToInject.map(function (path) {
     return 'assets/' + path;
   });
 
@@ -124,17 +123,17 @@ module.exports = function(grunt) {
   // Get path to core grunt dependencies from Sails
   var path = require('path');
   var depsPath = grunt.option('gdsrc') || 'node_modules/sails/node_modules';
-  grunt.loadTasks(path.join(depsPath, '/grunt-contrib-clean/tasks'));
-  grunt.loadTasks(path.join(depsPath, '/grunt-contrib-copy/tasks'));
-  grunt.loadTasks(path.join(depsPath, '/grunt-contrib-concat/tasks'));
   grunt.loadTasks(path.join(depsPath, '/grunt-sails-linker/tasks'));
-  grunt.loadTasks(path.join(depsPath, '/grunt-contrib-jst/tasks'));
-  grunt.loadTasks(path.join(depsPath, '/grunt-contrib-watch/tasks'));
-  grunt.loadTasks(path.join(depsPath, '/grunt-contrib-uglify/tasks'));
-  grunt.loadTasks(path.join(depsPath, '/grunt-contrib-cssmin/tasks'));
-  grunt.loadTasks(path.join(depsPath, '/grunt-contrib-less/tasks'));
-  grunt.loadTasks(path.join(depsPath, '/grunt-contrib-coffee/tasks'));
   grunt.loadTasks(path.join(depsPath, '/grunt-sync/tasks'));
+  grunt.loadTasks(path.join('node_modules', '/grunt-contrib-clean/tasks'));
+  grunt.loadTasks(path.join('node_modules', '/grunt-contrib-copy/tasks'));
+  grunt.loadTasks(path.join('node_modules', '/grunt-contrib-concat/tasks'));
+  grunt.loadTasks(path.join('node_modules', '/grunt-contrib-jst/tasks'));
+  grunt.loadTasks(path.join('node_modules', '/grunt-contrib-watch/tasks'));
+  grunt.loadTasks(path.join('node_modules', '/grunt-contrib-uglify/tasks'));
+  grunt.loadTasks(path.join('node_modules', '/grunt-contrib-cssmin/tasks'));
+  grunt.loadTasks(path.join('node_modules', '/grunt-contrib-less/tasks'));
+  grunt.loadTasks(path.join('node_modules', '/grunt-contrib-coffee/tasks'));
 
 
   // Project configuration.
