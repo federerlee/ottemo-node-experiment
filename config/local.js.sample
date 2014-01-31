@@ -1,5 +1,8 @@
 // sample config/local.js
 //
+// you may copy this an rename it local.js
+// ***remember it is in the .gitignore***
+
 
 module.exports = {
 
