@@ -1,4 +1,4 @@
-ttemo API Server
+# Ottemo Community Server
 
 an ambitious open-source ecommerce solution based on Node.js
 
