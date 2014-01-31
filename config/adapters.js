@@ -16,31 +16,21 @@ module.exports.adapters = {
 
   // If you leave the adapter config unspecified 
   // in a model definition, 'default' will be used.
-  'default': 'mongo',
+  'default': 'postgres',
 
-  // define mongo
-  mongo: {
-    module: 'sails-mongo',
-    url: 'mongodb://localhost:27017/development'
-  },
+  // it is best to put all this in a local.js file which is
+  // already in the .gitignore and keep your userid/pass safe
+  postgres: {
+    module    : 'sails-postgresql',
+    host      : 'localhost',
+    port      : '27017',
+    user      : 'USERID',       // db username
+    password  : 'PASSWORD',     // db user passwd
+    database  : 'DATABASE',     // database name
 
-  // Persistent adapter for DEVELOPMENT ONLY
-  // (data is preserved when the server shuts down)
-  disk: {
-    module: 'sails-disk'
-  },
+    schema    : true // matches the db schema to models
 
-
-  // MySQL is the world's most popular relational database.
-  // Learn more: http://en.wikipedia.org/wiki/MySQL
-  myLocalMySQLDatabase: {
-
-    module: 'sails-mysql',
-    host: 'YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS',
-    user: 'YOUR_MYSQL_USER',
-    // Psst.. You can put your password in config/local.js instead
-    // so you don't inadvertently push it up if you're using version control
-    password: 'YOUR_MYSQL_PASSWORD', 
-    database: 'YOUR_MYSQL_DB'
   }
+
+
 };
