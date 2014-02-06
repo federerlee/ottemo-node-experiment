@@ -1,7 +1,7 @@
 /**
  * Visitor.js
  *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @description :: Visitor model 
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 
@@ -11,54 +11,54 @@ module.exports = {
 
     email: {
       type: 'String',
-      trim: true,
-      lowercase: true,
+//      trim: true,
+//      lowercase: true,
       required: true,
       unique: true
     },
 
     isActive: {
       type: 'Boolean',
-      default: false
+      defaultsTo: false
     },
 
     isMember: {
       type: 'Boolean',
-      default: false
+      defaultsTo: false
     },
     
     fname: {
       type: 'String',
-      trim: true,
+ //     trim: true,
       required: true
     },
 
     lname: {
       type: 'String',
-      trim: true,
+//      trim: true,
       required: true
     },
 
     nickname: {
-      type: 'String',
-      trim: true
+      type: 'String'
+//      trim: true
     },
 
     group: {
       type: 'String',
       enum: ['Visitor', 'Member', 'Admin', 'Retired'],
-      default: 'Visitor',
+      defaultsTo: 'Visitor',
       required: true
     },
 
     hashedPassword: {
-      type: 'String',
-      trim: true
+      type: 'String'
+//      trim: true
     },
 
     tmpPass: {
       type: 'Boolean',
-      default: false
+      defaultsTo: false
     }
 
   }
