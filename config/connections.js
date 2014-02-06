@@ -12,4 +12,4 @@ module.exports.connections = {
     schema    : true
   }
 
-}
+};
