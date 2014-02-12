@@ -9,7 +9,7 @@ an ambitious open-source ecommerce solution based on Node.js
     brew install git-flow
     brew install hub
     eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
-    npm install -g jasmine bower
+    npm install -g mocha bower
     gem install compass  // you must have ruby 1.9.x or 2.x.x installed
 
 ### Debian based Linux
@@ -26,7 +26,7 @@ an ambitious open-source ecommerce solution based on Node.js
     chmod +x ~/bin/hub
     eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
 
-    npm install -g jasmine bower
+    npm install -g mocha bower
 
 ## Install local dependancies
     cd <directory of cloned repo>
