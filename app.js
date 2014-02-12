@@ -22,7 +22,6 @@
 var sails;
 try {
 	sails = require('sails');
-  var passport = require('passport');
 
 }
 catch (e) {
