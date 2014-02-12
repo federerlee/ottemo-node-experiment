@@ -22,6 +22,8 @@
 var sails;
 try {
 	sails = require('sails');
+  var passport = require('passport');
+
 }
 catch (e) {
 	console.error('To run an app using `node app.js`, you usually need to have a version of `sails` installed in the same directory as your app.');
