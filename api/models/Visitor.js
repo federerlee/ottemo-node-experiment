@@ -59,6 +59,19 @@ module.exports = {
     tmpPass: {
       type: 'Boolean',
       defaultsTo: false
+    },
+
+    // attempting to add association
+    // A visitor may have many addresses
+    addresses: {
+      collection: 'visitoraddress',
+      via: 'visitor'
+    },
+
+    // a visitor may have many shipping addresses
+    shippingAddresses: {
+      collection: 'ShippingAddress',
+      via: 'visitor'
     }
 
   }
