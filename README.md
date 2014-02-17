@@ -32,7 +32,7 @@ an ambitious open-source ecommerce solution based on Node.js
 
 Instructions provided for Mac and Debian based linux. There is a sample database configuration file called: sample-local-js
 
-### Mac
+### OSX
 
 This will start postgresql upon startup/login.  We are also installing pgadmin3 to provide a gui based management tool.
 
@@ -51,7 +51,7 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
     sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" >> /etc/apt/sources.list.d/postgresql.list'
     sudo apt-get update
-    sudo apt-get install python-software-properties postgresql-9.3 libpq-dev pgadmin3 postgresql-contrib -y
+    sudo apt-get install python-software-properties postgresql-9.3 libpq-dev pgadmin3 postgresql-contrib-9.3 -y
 
 ### Create a dev database and user
     
@@ -63,6 +63,10 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     grant all privileges on database ottemo_dev to USERNAME;
 
     alter user USERNAME with password 'PASSWORD';
+    CREATE EXTENSION adminpack;
+    \c ottemo_dev;
+    CREATE EXTENSION adminpack;
+    \q
 
 ## Install local dependancies
     cd <directory of cloned repo>
