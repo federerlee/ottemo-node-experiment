@@ -30,10 +30,6 @@ module.exports.routes = {
 
   // Custom routes here...
 
-  // register visitors
-//  'get /register': 'VisitorController.register',
- // 'post /register': 'VisitorController.create',
-
   // login
   'get /login': {
     controller: 'AuthController',

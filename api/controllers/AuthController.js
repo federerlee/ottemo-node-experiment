@@ -40,7 +40,7 @@ module.exports = {
   },
 
  // TODO: clean this up
- // _config: {}
+  _config: {}
   
 };
 
