@@ -2,7 +2,7 @@
 
 an ambitious open-source ecommerce solution based on Node.js
 
-## Installation Instructions and Getting Started
+## Ottemo Installation Instructions and Getting Started
 
 ### OSX
     brew install npm
@@ -27,6 +27,26 @@ an ambitious open-source ecommerce solution based on Node.js
     eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
 
     npm install -g mocha bower
+
+## Install PostgreSQL 9.3
+
+### Ubuntu
+ 
+Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to determine your release version
+
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+    sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" >> /etc/apt/sources.list.d/postgresql.list'
+    sudo apt-get update
+    sudo apt-get install python-software-properties postgresql-9.3 libpq-dev pgadmin3 postgresql-contrib -y
+    
+    sudo su postgres -c psql
+    create user USERNAME with password 'PASSWORD';
+    alter user USERNAME supervisor;
+
+    create database ottemo_dev;
+    grant all privileges on database ottemo_dev to USERNAME;
+
+    alter user USERNAME with password 'PASSWORD';
 
 ## Install local dependancies
     cd <directory of cloned repo>
