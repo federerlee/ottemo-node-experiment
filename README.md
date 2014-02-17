@@ -68,6 +68,19 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     CREATE EXTENSION adminpack;                       // add adminpack to otteme_dev db
     \q
 
+### Change postgresql trust levels for development
+
+change this line in /etc/postgresql/9.3/main/pg_hba.conf
+
+    local   all             all                                    md5
+to:
+    local   all             all                                    trust
+
+and change this line: 
+    host    all             all             127.0.0.1/32            md5
+to:
+    host    all             all             127.0.0.1/32            trust
+
 ## Install local dependancies
     cd <directory of cloned repo>
     npm install
