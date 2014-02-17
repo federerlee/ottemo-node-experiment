@@ -40,10 +40,10 @@ passport.use(new LocalStrategy(
   })
 );
 
-module.exportsa = {
+module.exports = {
   express: {
     customMiddleware: function (app) {
-      console.log('middleware for passport');
+      console.log('Middleware for passport');
       app.use(passport.initialize());
       app.use(passport.session());
     }

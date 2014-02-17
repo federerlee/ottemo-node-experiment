@@ -31,12 +31,22 @@ module.exports.routes = {
   // Custom routes here...
 
   // register visitors
-  'get /register': 'VisitorController.register',
-  'post /register': 'VisitorController.create',
+//  'get /register': 'VisitorController.register',
+ // 'post /register': 'VisitorController.create',
+
   // login
-  'get /login': 'AuthController.login',
-  'post /login': 'AuthController.process',
-  'get /logout': 'AuthController.logout'
+  'get /login': {
+    controller: 'AuthController',
+    action: 'login'
+  },
+  'post /login': {
+    controller: 'AuthController',
+    action: 'process'
+  },
+  'get /logout': {
+    controller: 'AuthController',
+    action: 'logout'
+  }
 
 
   // If a request to a URL doesn't match any of the custom routes above, it is matched 

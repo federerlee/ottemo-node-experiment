@@ -15,15 +15,21 @@ module.exports = {
   process: function (req, res) {
     passport.authenticate('local', function (err, visitor, info) {
       if ((err) || (!visitor)) {
-        res.redirect('/login');
+//        res.redirect('/login');
         console.log('Houston, we have a problem: ' + info + '\nError: ' + err);
-        return;
+        res.send(err);
+        return res.send({
+          message: 'login failed'
+        });
+        //res.send(err);
       }
       req.logIn(visitor, function (err) {
         if (err) {
-          res.redirect('/login');
+          res.send(err);
         }
-        return res.redirect('/');
+        return res.send({
+          message: 'login successful'
+        });
       });
     })(req, res);
   },
@@ -33,6 +39,13 @@ module.exports = {
     res.send('logout successful');
   },
 
-  _config: {}
+ // TODO: clean this up
+ // _config: {}
   
+};
+
+module.exports.blueprints = {
+  actions: true,
+  rest: true,
+  shortcuts: true
 };
