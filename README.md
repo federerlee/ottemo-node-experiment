@@ -42,7 +42,7 @@ This will start postgresql upon startup/login.  We are also installing pgadmin3 
     ln -s /usr/local/Cellar/postgresql/9.x.x/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
     pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
 
-    psql postgres -c 'CREATE EXTENSION "adminpack";'
+    psql postgres -c 'CREATE EXTENSION "adminpack";'     // add adminpack to postgres db
 
 ### Ubuntu
  
@@ -63,9 +63,9 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     grant all privileges on database ottemo_dev to USERNAME;
 
     alter user USERNAME with password 'PASSWORD';
-    CREATE EXTENSION adminpack;
+    CREATE EXTENSION adminpack;                       // add adminpack to postgres db
     \c ottemo_dev;
-    CREATE EXTENSION adminpack;
+    CREATE EXTENSION adminpack;                       // add adminpack to otteme_dev db
     \q
 
 ## Install local dependancies
