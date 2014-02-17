@@ -30,6 +30,20 @@ an ambitious open-source ecommerce solution based on Node.js
 
 ## Install PostgreSQL 9.3
 
+Instructions provided for Mac and Debian based linux. There is a sample database configuration file called: sample-local-js
+
+### Mac
+
+This will start postgresql upon startup/login.  We are also installing pgadmin3 to provide a gui based management tool.
+
+    brew update
+    brew install postgresql pgadmin3
+    initdb /usr/local/var/postgres
+    ln -s /usr/local/Cellar/postgresql/9.x.x/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+    pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
+    psql postgres -c 'CREATE EXTENSION "adminpack";'
+
 ### Ubuntu
  
 Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to determine your release version
@@ -38,6 +52,8 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" >> /etc/apt/sources.list.d/postgresql.list'
     sudo apt-get update
     sudo apt-get install python-software-properties postgresql-9.3 libpq-dev pgadmin3 postgresql-contrib -y
+
+### Create a dev database and user
     
     sudo su postgres -c psql
     create user USERNAME with password 'PASSWORD';
