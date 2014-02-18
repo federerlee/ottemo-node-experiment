@@ -20,8 +20,10 @@ passport.deserializeUser(function (id, done) {
 });
 
 passport.use(new LocalStrategy(
-  function (username, password, done) {
-    Visitor.findByUsername(email).done(function (err, visitor) {
+  function (email, password, done) {
+    Visitor.findOneByEmail(email).done(function (err, visitor) {
+      console.log('Found user: ' + visitor.email);
+      console.log('Password: ' + password);
       if (err) {
         return done(null, err); 
       }
@@ -30,10 +32,11 @@ passport.use(new LocalStrategy(
           message: 'Incorrect Email Address'
         });
       }
-      bcrypt.compare(password, visitor[0].password, function (err, res) {
+      bcrypt.compare(password, visitor.password, function (err, res) {
         if (!res) {
           return done(null, false, { message: 'Invalid Password' });
         }
+        console.log('Password Validated');
         return done(null, visitor);
       });
     });

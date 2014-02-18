@@ -8,6 +8,15 @@
 var passport = require('passport');
 module.exports = {  
 
+  register: function (req, res) {
+    res.view('auth/register');
+  },
+
+//  create: function (req, res) {
+    
+
+// },
+
   login: function (req, res) {
     res.view('auth/login');
   },
@@ -15,21 +24,16 @@ module.exports = {
   process: function (req, res) {
     passport.authenticate('local', function (err, visitor, info) {
       if ((err) || (!visitor)) {
-//        res.redirect('/login');
+        res.redirect('/login');
         console.log('Houston, we have a problem: ' + info + '\nError: ' + err);
-        res.send(err);
-        return res.send({
-          message: 'login failed'
-        });
-        //res.send(err);
+        return;
       }
-      req.logIn(visitor, function (err) {
+      req.login(visitor, function (err) {
         if (err) {
-          res.send(err);
+          res.redirect('/login');
         }
-        return res.send({
-          message: 'login successful'
-        });
+        console.log('Successful Login');
+        return res.redirect('/');
       });
     })(req, res);
   },

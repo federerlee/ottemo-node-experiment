@@ -42,7 +42,19 @@ module.exports.routes = {
   'get /logout': {
     controller: 'AuthController',
     action: 'logout'
+  },
+
+  //registration
+  'get /register': {
+    controller: 'AuthController',
+    action: 'register'
+  },
+  'post /register': {
+    controller: 'AuthController',
+    action: 'create'
   }
+
+
 
 
   // If a request to a URL doesn't match any of the custom routes above, it is matched 

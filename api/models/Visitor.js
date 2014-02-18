@@ -12,7 +12,6 @@ module.exports = {
 
     email: {
       type: 'String',
-//      lowercase: true,
       required: true,
       unique: true
     },
@@ -47,7 +46,8 @@ module.exports = {
 
     password: {
       type: 'String',
-      required: true
+      required: true,
+      minLength: 6
     },
 
     tmpPass: {
