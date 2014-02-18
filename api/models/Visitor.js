@@ -12,6 +12,7 @@ module.exports = {
 
     email: {
       type: 'String',
+      email: true,
       required: true,
       unique: true
     },
