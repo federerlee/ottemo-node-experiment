@@ -15,7 +15,7 @@
 module.exports.policies = {
   '*': 'authenticated',
   VisitorController: {
-    'create': true
+    '*': true
   },
   AuthController: {
     '*': true
