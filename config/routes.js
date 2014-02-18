@@ -28,8 +28,33 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-
   // Custom routes here...
+
+  // login
+  'get /login': {
+    controller: 'AuthController',
+    action: 'login'
+  },
+  'post /login': {
+    controller: 'AuthController',
+    action: 'process'
+  },
+  'get /logout': {
+    controller: 'AuthController',
+    action: 'logout'
+  },
+
+  //registration
+  'get /register': {
+    controller: 'AuthController',
+    action: 'register'
+  },
+  'post /register': {
+    controller: 'AuthController',
+    action: 'create'
+  }
+
+
 
 
   // If a request to a URL doesn't match any of the custom routes above, it is matched 

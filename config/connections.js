@@ -5,9 +5,9 @@ module.exports.connections = {
     adapter   : 'sails-postgresql',
     host      : 'localhost',
     port      : 5432,
-    user      : '',
+    user      : 'james',
     password  : '',
-    database  : '',
+    database  : 'ottemo_dev',
 
     schema    : true
   }

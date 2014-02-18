@@ -5,21 +5,20 @@
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
 
-module.exports = {
+var bcrypt = require('bcrypt');
 
+module.exports = {
   attributes: {
 
     email: {
       type: 'String',
-//      trim: true,
-//      lowercase: true,
       required: true,
       unique: true
     },
 
     isActive: {
       type: 'Boolean',
-      defaultsTo: false
+      defaultsTo: true 
     },
 
     isMember: {
@@ -29,31 +28,26 @@ module.exports = {
     
     fname: {
       type: 'String',
- //     trim: true,
-      required: true
     },
 
     lname: {
       type: 'String',
-//      trim: true,
-      required: true
     },
 
     nickname: {
       type: 'String'
-//      trim: true
     },
 
     group: {
       type: 'String',
       enum: ['Visitor', 'Member', 'Admin', 'Retired'],
       defaultsTo: 'Visitor',
-      required: true
     },
 
-    hashedPassword: {
-      type: 'String'
-//      trim: true
+    password: {
+      type: 'String',
+      required: true,
+      minLength: 6
     },
 
     tmpPass: {
@@ -74,6 +68,29 @@ module.exports = {
       via: 'visitor'
     }
 
+  },
+
+  // override toJSON and remove password from returned JSON
+  toJSON: function () {
+    var foo = this.toObject();
+    delete foo.password;
+    return foo;
+
+  },
+
+  // encrypt the password before we store in db
+  beforeCreate: function (visitor, cb) {
+    bcrypt.genSalt(10, function (err, salt) {
+      bcrypt.hash(visitor.password, salt, function (err, hash) {
+        if (err) {
+          console.log(err);
+          cb(err);
+        } else {
+          visitor.password = hash;
+          cb(null, visitor);
+        }
+      });
+    });
   }
 
 };
