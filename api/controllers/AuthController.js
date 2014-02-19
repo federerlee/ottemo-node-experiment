@@ -1,5 +1,5 @@
 /**
- * AuthController.js 
+ * api/controllers/AuthController.js 
  *
  * @description :: a controller to hold passport methods
  * @docs        :: http://sailsjs.org/#!documentation/controllers
@@ -33,14 +33,15 @@ module.exports = {
           res.redirect('/login');
         }
         console.log('Successful Login');
-        return res.redirect('/');
+        return res.redirect('/visitor/profile/' + visitor.id);
       });
     })(req, res);
   },
 
   logout: function (req, res) {
     req.logout();
-    res.send('logout successful');
+    console.log('logout successful');
+    res.redirect('/');
   },
 
  // TODO: clean this up

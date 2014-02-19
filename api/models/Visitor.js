@@ -12,6 +12,7 @@ module.exports = {
 
     email: {
       type: 'String',
+      email: true,
       required: true,
       unique: true
     },
@@ -74,6 +75,7 @@ module.exports = {
   toJSON: function () {
     var foo = this.toObject();
     delete foo.password;
+    delete foo.tmpPass;
     return foo;
 
   },

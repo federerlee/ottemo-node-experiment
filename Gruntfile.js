@@ -263,154 +263,154 @@ module.exports = function (grunt) {
      */
     'sails-linker': {
 
-      devJs: {
-        options: {
-          startTag: '<!--SCRIPTS-->',
-          endTag: '<!--SCRIPTS END-->',
-          fileTmpl: '<script src="%s"></script>',
-          appRoot: '.tmp/public',
-          relative: true
-        },
-        files: {
-          '.tmp/public/**/*.html': jsFilesToInject,
-          'views/**/*.html': jsFilesToInject,
-          'views/**/*.ejs': jsFilesToInject
-        }
-      },
-
-      prodJs: {
-        options: {
-          startTag: '<!--SCRIPTS-->',
-          endTag: '<!--SCRIPTS END-->',
-          fileTmpl: '<script src="%s"></script>',
-          appRoot: '.tmp/public',
-          relative: true
-        },
-        files: {
-          '.tmp/public/**/*.html': ['.tmp/public/min/production.js'],
-          'views/**/*.html': ['.tmp/public/min/production.js'],
-          'views/**/*.ejs': ['.tmp/public/min/production.js']
-        }
-      },
-
-      devStyles: {
-        options: {
-          startTag: '<!--STYLES-->',
-          endTag: '<!--STYLES END-->',
-          fileTmpl: '<link rel="stylesheet" href="%s">',
-          appRoot: '.tmp/public',
-          relative: true
-        },
-
-        // cssFilesToInject defined up top
-        files: {
-          '.tmp/public/**/*.html': cssFilesToInject,
-          'views/**/*.html': cssFilesToInject,
-          'views/**/*.ejs': cssFilesToInject
-        }
-      },
-
-      prodStyles: {
-        options: {
-          startTag: '<!--STYLES-->',
-          endTag: '<!--STYLES END-->',
-          fileTmpl: '<link rel="stylesheet" href="%s">',
-          appRoot: '.tmp/public',
-          relative: true
-        },
-        files: {
-          '.tmp/public/index.html': ['.tmp/public/min/production.css'],
-          'views/**/*.html': ['.tmp/public/min/production.css'],
-          'views/**/*.ejs': ['.tmp/public/min/production.css']
-        }
-      },
-
-      // Bring in JST template object
-      devTpl: {
-        options: {
-          startTag: '<!--TEMPLATES-->',
-          endTag: '<!--TEMPLATES END-->',
-          fileTmpl: '<script type="text/javascript" src="%s"></script>',
-          appRoot: '.tmp/public',
-          relative: true
-        },
-        files: {
-          '.tmp/public/index.html': ['.tmp/public/jst.js'],
-          'views/**/*.html': ['.tmp/public/jst.js'],
-          'views/**/*.ejs': ['.tmp/public/jst.js']
-        }
-      },
+      // devJs: {
+      //   options: {
+      //     startTag: '<!--SCRIPTS-->',
+      //     endTag: '<!--SCRIPTS END-->',
+      //     fileTmpl: '<script src="%s"></script>',
+      //     appRoot: '.tmp/public',
+      //     relative: true
+      //   },
+      //   files: {
+      //     '.tmp/public/**/*.html': jsFilesToInject,
+      //     'views/**/*.html': jsFilesToInject,
+      //     'views/**/*.ejs': jsFilesToInject
+      //   }
+      // },
+      //
+      // prodJs: {
+      //   options: {
+      //     startTag: '<!--SCRIPTS-->',
+      //     endTag: '<!--SCRIPTS END-->',
+      //     fileTmpl: '<script src="%s"></script>',
+      //     appRoot: '.tmp/public',
+      //     relative: true
+      //   },
+      //   files: {
+      //     '.tmp/public/**/*.html': ['.tmp/public/min/production.js'],
+      //     'views/**/*.html': ['.tmp/public/min/production.js'],
+      //     'views/**/*.ejs': ['.tmp/public/min/production.js']
+      //   }
+      // },
+      //
+      // devStyles: {
+      //   options: {
+      //     startTag: '<!--STYLES-->',
+      //     endTag: '<!--STYLES END-->',
+      //     fileTmpl: '<link rel="stylesheet" href="%s">',
+      //     appRoot: '.tmp/public',
+      //     relative: true
+      //   },
+      //
+      //   // cssFilesToInject defined up top
+      //   files: {
+      //     '.tmp/public/**/*.html': cssFilesToInject,
+      //     'views/**/*.html': cssFilesToInject,
+      //     'views/**/*.ejs': cssFilesToInject
+      //   }
+      // },
+      //
+      // prodStyles: {
+      //   options: {
+      //     startTag: '<!--STYLES-->',
+      //     endTag: '<!--STYLES END-->',
+      //     fileTmpl: '<link rel="stylesheet" href="%s">',
+      //     appRoot: '.tmp/public',
+      //     relative: true
+      //   },
+      //   files: {
+      //     '.tmp/public/index.html': ['.tmp/public/min/production.css'],
+      //     'views/**/*.html': ['.tmp/public/min/production.css'],
+      //     'views/**/*.ejs': ['.tmp/public/min/production.css']
+      //   }
+      // },
+      //
+      // // Bring in JST template object
+      // devTpl: {
+      //   options: {
+      //     startTag: '<!--TEMPLATES-->',
+      //     endTag: '<!--TEMPLATES END-->',
+      //     fileTmpl: '<script type="text/javascript" src="%s"></script>',
+      //     appRoot: '.tmp/public',
+      //     relative: true
+      //   },
+      //   files: {
+      //     '.tmp/public/index.html': ['.tmp/public/jst.js'],
+      //     'views/**/*.html': ['.tmp/public/jst.js'],
+      //     'views/**/*.ejs': ['.tmp/public/jst.js']
+      //   }
+      // },
 
 
       /*******************************************
        * Jade linkers (TODO: clean this up)
        *******************************************/
 
-      // devJsJADE: {
-      //   options: {
-      //     startTag: '// SCRIPTS',
-      //     endTag: '// SCRIPTS END',
-      //     fileTmpl: 'script(type="text/javascript", src="%s")',
-      //     appRoot: '.tmp/public',
-      //     relative: true
-      //   },
-      //   files: {
-      //     'views/**/*.jade': jsFilesToInject
-      //   }
-      // },
+      devJsJADE: {
+        options: {
+          startTag: '// SCRIPTS',
+          endTag: '// SCRIPTS END',
+          fileTmpl: 'script(type="text/javascript", src="%s")',
+          appRoot: '.tmp/public',
+          relative: true
+        },
+        files: {
+          'views/**/*.jade': jsFilesToInject
+        }
+      },
 
-      // prodJsJADE: {
-      //   options: {
-      //     startTag: '// SCRIPTS',
-      //     endTag: '// SCRIPTS END',
-      //     fileTmpl: 'script(type="text/javascript", src="%s")',
-      //     appRoot: '.tmp/public',
-      //     relative: true
-      //   },
-      //   files: {
-      //     'views/**/*.jade': ['.tmp/public/min/production.js']
-      //   }
-      // },
+      prodJsJADE: {
+        options: {
+          startTag: '// SCRIPTS',
+          endTag: '// SCRIPTS END',
+          fileTmpl: 'script(type="text/javascript", src="%s")',
+          appRoot: '.tmp/public',
+          relative: true
+        },
+        files: {
+          'views/**/*.jade': ['.tmp/public/min/production.js']
+        }
+      },
 
-      // devStylesJADE: {
-      //   options: {
-      //     startTag: '// STYLES',
-      //     endTag: '// STYLES END',
-      //     fileTmpl: 'link(rel="stylesheet", href="%s")',
-      //     appRoot: '.tmp/public',
-      //     relative: true
-      //   },
-      //   files: {
-      //     'views/**/*.jade': cssFilesToInject
-      //   }
-      // },
+      devStylesJADE: {
+        options: {
+          startTag: '// STYLES',
+          endTag: '// STYLES END',
+          fileTmpl: 'link(rel="stylesheet", href="%s")',
+          appRoot: '.tmp/public',
+          relative: true
+        },
+        files: {
+          'views/**/*.jade': cssFilesToInject
+        }
+      },
 
-      // prodStylesJADE: {
-      //   options: {
-      //     startTag: '// STYLES',
-      //     endTag: '// STYLES END',
-      //     fileTmpl: 'link(rel="stylesheet", href="%s")',
-      //     appRoot: '.tmp/public',
-      //     relative: true
-      //   },
-      //   files: {
-      //     'views/**/*.jade': ['.tmp/public/min/production.css']
-      //   }
-      // },
+      prodStylesJADE: {
+        options: {
+          startTag: '// STYLES',
+          endTag: '// STYLES END',
+          fileTmpl: 'link(rel="stylesheet", href="%s")',
+          appRoot: '.tmp/public',
+          relative: true
+        },
+        files: {
+          'views/**/*.jade': ['.tmp/public/min/production.css']
+        }
+      },
 
-      // // Bring in JST template object
-      // devTplJADE: {
-      //   options: {
-      //     startTag: '// TEMPLATES',
-      //     endTag: '// TEMPLATES END',
-      //     fileTmpl: 'script(type="text/javascript", src="%s")',
-      //     appRoot: '.tmp/public',
-      //     relative: true
-      //   },
-      //   files: {
-      //     'views/**/*.jade': ['.tmp/public/jst.js']
-      //   }
-      // }
+      // Bring in JST template object
+      devTplJADE: {
+        options: {
+          startTag: '// TEMPLATES',
+          endTag: '// TEMPLATES END',
+          fileTmpl: 'script(type="text/javascript", src="%s")',
+          appRoot: '.tmp/public',
+          relative: true
+        },
+        files: {
+          'views/**/*.jade': ['.tmp/public/jst.js']
+        }
+      }
       /************************************
        * Jade linker end
        ************************************/
@@ -451,12 +451,12 @@ module.exports = function (grunt) {
   grunt.registerTask('linkAssets', [
 
     // Update link/script/template references in `assets` index.html
-    'sails-linker:devJs',
-    'sails-linker:devStyles',
-    'sails-linker:devTpl',
-    // 'sails-linker:devJsJADE',
-    // 'sails-linker:devStylesJADE',
-    // 'sails-linker:devTplJADE'
+    // 'sails-linker:devJs',
+    // 'sails-linker:devStyles',
+    // 'sails-linker:devTpl',
+    'sails-linker:devJsJADE',
+    'sails-linker:devStylesJADE',
+    'sails-linker:devTplJADE'
   ]);
 
 
@@ -479,27 +479,27 @@ module.exports = function (grunt) {
     'concat',
     'uglify',
     'cssmin',
-    'sails-linker:prodJs',
-    'sails-linker:prodStyles',
-    'sails-linker:devTpl',
-    // 'sails-linker:prodJsJADE',
-    // 'sails-linker:prodStylesJADE',
-    // 'sails-linker:devTplJADE'
+    // 'sails-linker:prodJs',
+    // 'sails-linker:prodStyles',
+    // 'sails-linker:devTpl',
+    'sails-linker:prodJsJADE',
+    'sails-linker:prodStylesJADE',
+    'sails-linker:devTplJADE'
   ]);
 
   // When API files are changed:
-  // grunt.event.on('watch', function(action, filepath) {
-  //   grunt.log.writeln(filepath + ' has ' + action);
+  grunt.event.on('watch', function(action, filepath) {
+    grunt.log.writeln(filepath + ' has ' + action);
 
-  //   // Send a request to a development-only endpoint on the server
-  //   // which will reuptake the file that was changed.
-  //   var baseurl = grunt.option('baseurl');
-  //   var gruntSignalRoute = grunt.option('signalpath');
-  //   var url = baseurl + gruntSignalRoute + '?action=' + action + '&filepath=' + filepath;
+    // Send a request to a development-only endpoint on the server
+    // which will reuptake the file that was changed.
+    var baseurl = grunt.option('baseurl');
+    var gruntSignalRoute = grunt.option('signalpath');
+    var url = baseurl + gruntSignalRoute + '?action=' + action + '&filepath=' + filepath;
 
-  //   require('http').get(url)
-  //   .on('error', function(e) {
-  //     console.error(filepath + ' has ' + action + ', but could not signal the Sails.js server: ' + e.message);
-  //   });
-  // });
+    require('http').get(url)
+    .on('error', function(e) {
+      console.error(filepath + ' has ' + action + ', but could not signal the Sails.js server: ' + e.message);
+    });
+  });
 };
