@@ -57,7 +57,7 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     
     sudo su postgres -c psql
     create user USERNAME with password 'PASSWORD';
-    alter user USERNAME supervisor;
+    alter user USERNAME superuser;
 
     create database ottemo_dev;
     grant all privileges on database ottemo_dev to USERNAME;
@@ -104,7 +104,7 @@ to:
     git pull-request -b develop
 
 ### Install local dependancies and begin coding
-    $ sails lift         // development mode by default and invokes nodemon
+    $ sails lift         // development mode by default
 
 Add routes (`config/routes.js`), create models (`api/models/`) and controllers (`api/controllers/`).
 
