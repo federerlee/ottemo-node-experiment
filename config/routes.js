@@ -46,11 +46,11 @@ module.exports.routes = {
 
   //registration
   'get /register': {
-    controller: 'AuthController',
+    controller: 'VisitorController',
     action: 'register'
   },
   'post /register': {
-    controller: 'AuthController',
+    controller: 'VisitorController',
     action: 'create'
   }
 

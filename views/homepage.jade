@@ -26,10 +26,10 @@ block body
     .main.container.clearfix
       h1 Welcome to Ottemo
       br
-      if (!user)
+      if (!visitor)
         a(href="/login") Login
         br
         a(href="/register") Register
-      if (user)
-        p You are currently logged in as #{user.username}
+      if (visitor)
+        p You are currently logged in as #{visitor.email}
         a(href="/logout") Logout
