@@ -62,9 +62,9 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     create database ottemo_dev;
     grant all privileges on database ottemo_dev to USERNAME;
 
-    alter user USERNAME with password 'PASSWORD';
+    alter user USERNAME with password 'PASSWORD';     // only if you need to change or add a password
     CREATE EXTENSION adminpack;                       // add adminpack to postgres db
-    \c ottemo_dev;
+    \c ottemo_dev;                                    // change to the ottemo_dev db
     CREATE EXTENSION adminpack;                       // add adminpack to otteme_dev db
     \q
 
