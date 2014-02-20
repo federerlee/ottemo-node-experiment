@@ -58,9 +58,11 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     sudo su postgres -c psql
     create user USERNAME with password 'PASSWORD';
     alter user USERNAME superuser;
+    
 
     create database ottemo_dev;
     grant all privileges on database ottemo_dev to USERNAME;
+    
 
     alter user USERNAME with password 'PASSWORD';     // only if you need to change or add a password
     CREATE EXTENSION adminpack;                       // add adminpack to postgres db
@@ -74,11 +76,15 @@ change this line in /etc/postgresql/9.3/main/pg_hba.conf
 
     local   all             all                                    md5
 to:
+
     local   all             all                                    trust
 
 and change this line: 
+
     host    all             all             127.0.0.1/32            md5
+    
 to:
+
     host    all             all             127.0.0.1/32            trust
 
 ## Install local dependancies
