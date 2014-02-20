@@ -1,6 +1,6 @@
 # Ottemo Community Server
 
-an ambitious open-source ecommerce solution based on Node.js
+an ambitious open-source ecommerce solution based on Node.js and built on the excellent [Sails Framework](http://sailsjs.org)
 
 ## Ottemo Installation Instructions and Getting Started
 
@@ -35,10 +35,8 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     create user USERNAME with password 'PASSWORD';
     alter user USERNAME superuser;
     
-
     create database ottemo_dev;
     grant all privileges on database ottemo_dev to USERNAME;
-    
 
     alter user USERNAME with password 'PASSWORD';     // only if you need to change or add a password
     CREATE EXTENSION adminpack;                       // add adminpack to postgres db
@@ -98,6 +96,9 @@ to:
     cd <directory of cloned repo>
     npm install
     bower install
+    
+## Contribute to Ottemo development
+We use git-flow internally, below is a mini quickstart if you are new to git-flow.
 
 ### Initialize Git-Flow
     git checkout master
@@ -111,7 +112,7 @@ to:
     git push -u origin <FEATURE-BRANCH>
     git pull-request -b develop
 
-### Install local dependancies and begin coding
+### Run in development mode
     $ sails lift         // development mode by default
 
 Add routes (`config/routes.js`), create models (`api/models/`) and controllers (`api/controllers/`).
