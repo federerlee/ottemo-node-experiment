@@ -4,35 +4,11 @@ an ambitious open-source ecommerce solution based on Node.js
 
 ## Ottemo Installation Instructions and Getting Started
 
-### OSX
-    brew install npm
-    brew install git-flow
-    brew install hub
-    eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
-    npm install -g mocha bower
-    gem install compass  // you must have ruby 1.9.x or 2.x.x installed
-
-### Debian based Linux
-    sudo apt-get update
-    sudo apt-get install -y python-software-properties python g++ make
-    sudo add-apt-repository -y ppa:chris-lea/node.js
-    sudo apt-get update
-    sudo apt-get install nodejs
-
-    sudo gem install compass
-    sudo apt-get install git-flow
-
-    curl http://hub.github.com/standalone -sLo ~/bin/hub
-    chmod +x ~/bin/hub
-    eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
-
-    npm install -g mocha bower
-
-## Install PostgreSQL 9.3
+### Install PostgreSQL 9.3
 
 Instructions provided for Mac and Debian based linux. There is a sample database configuration file called: sample-local-js
 
-### OSX
+#### OSX
 
 This will start postgresql upon startup/login.  We are also installing pgadmin3 to provide a gui based management tool.
 
@@ -44,7 +20,7 @@ This will start postgresql upon startup/login.  We are also installing pgadmin3 
 
     psql postgres -c 'CREATE EXTENSION "adminpack";'     // add adminpack to postgres db
 
-### Ubuntu
+#### Ubuntu
  
 Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to determine your release version
 
@@ -53,7 +29,7 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     sudo apt-get update
     sudo apt-get install python-software-properties postgresql-9.3 libpq-dev pgadmin3 postgresql-contrib-9.3 -y
 
-### Create a dev database and user
+#### Create a dev database and user
     
     sudo su postgres -c psql
     create user USERNAME with password 'PASSWORD';
@@ -70,7 +46,7 @@ Change 'trusty-pgdg' to your specific version of ubuntu, run 'lsb_release -c' to
     CREATE EXTENSION adminpack;                       // add adminpack to otteme_dev db
     \q
 
-### Change postgresql trust levels for development
+#### Change postgresql trust levels for development
 
 change this line in /etc/postgresql/9.3/main/pg_hba.conf
 
@@ -87,15 +63,41 @@ to:
 
     host    all             all             127.0.0.1/32            trust
 
-## Install local dependancies
+### Set up your local env for development
+
+#### OSX
+    brew install npm
+    brew install git-flow
+    brew install hub
+    eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
+    npm install -g mocha bower
+    gem install compass  // you must have ruby 1.9.x or 2.x.x installed
+
+#### Debian based Linux
+    sudo apt-get update
+    sudo apt-get install -y python-software-properties python g++ make
+    sudo add-apt-repository -y ppa:chris-lea/node.js
+    sudo apt-get update
+    sudo apt-get install nodejs
+
+    sudo gem install compass
+    sudo apt-get install git-flow
+
+    curl http://hub.github.com/standalone -sLo ~/bin/hub
+    chmod +x ~/bin/hub
+    eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
+
+    npm install -g mocha bower
+
+## Download and Setup Ottemo
+
+### Clone the Repository
+    git clone https://github.com/ottemo/ottemo.git ottemo
+    
+### Install local dependancies for Ottemo
     cd <directory of cloned repo>
     npm install
     bower install
-
-## Usage
-
-### Clone the Repository
-    git clone https://github.com/ottemo/api-server.git ottemo-api-server
 
 ### Initialize Git-Flow
     git checkout master
