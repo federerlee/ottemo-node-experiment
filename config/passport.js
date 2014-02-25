@@ -9,6 +9,7 @@ var passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
   TwitterStrategy = require('passport-twitter').Strategy,
   FacebookStrategy = require('passport-facebook').Strategy,
+  GoogleStrategy = require('passport-google').Strategy,
   bcrypt = require('bcrypt');
 
 passport.serializeUser(function (visitor, done) {
@@ -55,6 +56,10 @@ module.exports = {
       },
       facebook: {
         key: process.env.FACEBOOK_OAUTH_KEY || '',
+        secret: process.env.FACEBOOK_OAUTH_SECRET || ''
+      },
+      google: {
+        key: process.env.TH_KEY || '',
         secret: process.env.FACEBOOK_OAUTH_SECRET || ''
       }
     },
