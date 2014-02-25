@@ -68,7 +68,7 @@ to:
     brew install git-flow
     brew install hub
     eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
-    npm install -g mocha bower
+    npm install -g mocha 
     gem install compass  // you must have ruby 1.9.x or 2.x.x installed
 
 #### Debian based Linux
@@ -85,7 +85,7 @@ to:
     chmod +x ~/bin/hub
     eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
 
-    npm install -g mocha bower
+    npm install -g mocha 
 
 ## To Download and Setup Ottemo
 
