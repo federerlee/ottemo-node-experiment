@@ -1,6 +1,6 @@
 # Ottemo Community Server
 
-an ambitious open-source ecommerce solution based on Node.js and built on the excellent [Sails Framework](http://sailsjs.org)
+Ottemo is democratizing ecommerce for the Small and Medium Enterprise, an ambitious open-source ecommerce solution based on Node.js and built on the excellent [Sails Framework](http://sailsjs.org)
 
 ## Ottemo Installation Instructions and Getting Started
 
@@ -87,7 +87,7 @@ to:
 
     npm install -g mocha bower
 
-## Download and Setup Ottemo
+## To Download and Setup Ottemo
 
 ### Clone the Repository
     git clone https://github.com/ottemo/ottemo.git ottemo
