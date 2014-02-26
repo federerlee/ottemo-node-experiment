@@ -23,12 +23,13 @@ module.exports = {
 
   process: function (req, res) {
     passport.authenticate('local', function (err, visitor, info) {
+      console.log(JSON.stringify(visitor));
       if ((err) || (!visitor)) {
         res.redirect('/login');
-        console.log('Houston, we have a problem: ' + info + '\nError: ' + err);
+        console.log('Houston, we have a problem: ' + err);
         return;
       }
-      req.login(visitor, function (err) {
+      req.logIn(visitor, function (err) {
         if (err) {
           res.redirect('/login');
         }

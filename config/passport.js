@@ -22,14 +22,14 @@ passport.deserializeUser(function (id, done) {
 passport.use(new LocalStrategy(
   function (email, password, done) {
     Visitor.findOneByEmail(email).done(function (err, visitor) {
-      console.log('Found user: ' + visitor.email);
+      console.log('Found user: ' + email);
       console.log('Password: ' + password);
       if (err) {
         return done(null, err); 
       }
-      if (!visitor || visitor.length < 1) {
+      if ((!visitor) || (visitor.length < 1)) {
         return done(null, false, {
-          message: 'Incorrect Email Address'
+          message: 'Email Address not found: ' + email
         });
       }
       bcrypt.compare(password, visitor.password, function (err, res) {
