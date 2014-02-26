@@ -7,13 +7,13 @@
 
 var passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
-  TwitterStrategy = require('passport-twitter').Strategy,
+  //TwitterStrategy = require('passport-twitter').Strategy,
   FacebookStrategy = require('passport-facebook').Strategy,
-  GoogleStrategy = require('passport-google').Strategy,
+  //GoogleStrategy = require('passport-google').Strategy,
   bcrypt = require('bcrypt');
 
 passport.serializeUser(function (visitor, done) {
-  done(null, visitor[0].id);
+  done(null, visitor.id);
 });
 
 passport.deserializeUser(function (id, done) {
@@ -36,7 +36,7 @@ passport.use(new LocalStrategy(
         });
       }
       bcrypt.compare(password, visitor.password, function (err, res) {
-        if (!res) {
+       V if (!res) {
           return done(null, false, { message: 'Invalid Password' });
         }
         console.log('Password Validated');
