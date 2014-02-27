@@ -5,8 +5,10 @@
  * @docs        :: 
  */
 
-var passport = require('passport'),
+var config = require('./oauth.js'),  // create your own oauth.js based on config/oauth-sample.js
+  passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
+  FacebookStrategy = require('passport-facebook').Strategy,
   bcrypt = require('bcrypt');
 
 passport.serializeUser(function (visitor, done) {
@@ -42,6 +44,19 @@ passport.use(new LocalStrategy(
     });
   })
 );
+
+passport.use(new FacebookStrategy({
+    clientID: config.facebook.clientID,
+    clientSecret: config.facebook.clientSecret,
+    callbackURL: config.facebook.callbackURL
+  },
+  function (accessToken, refreshToken, profile, done) {
+    process.nextTick(function () {
+      return done(null, profile);
+    });
+  }
+));
+
 
 module.exports = {
   express: {

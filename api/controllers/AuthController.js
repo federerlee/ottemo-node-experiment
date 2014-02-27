@@ -39,6 +39,20 @@ module.exports = {
     })(req, res);
   },
 
+  facebook: function (req, res) {
+    passport.authenticate('facebook', function (err, visitor, info) { 
+    })(req, res);
+  }, 
+
+  facebookCB: function (req, res) {
+    passport.authenticate('facebook', { 
+      failureRedirect: '/login' 
+    },
+    function (req, res) {
+      res.redirect('/account');
+    })(req, res);
+  },
+
   logout: function (req, res) {
     req.logout();
     console.log('logout successful');
