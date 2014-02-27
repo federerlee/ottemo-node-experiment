@@ -45,7 +45,7 @@ module.exports.routes = {
   },
   'get /auth/facebook/callback': {
     controller: 'AuthController',
-    action: 'facebookCB'
+    action: 'facebookCallback'
   },
   'get /logout': {
     controller: 'AuthController',

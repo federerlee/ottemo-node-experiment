@@ -40,17 +40,15 @@ module.exports = {
   },
 
   facebook: function (req, res) {
-    passport.authenticate('facebook', function (err, visitor, info) { 
-    })(req, res);
+    passport.authenticate('facebook')(req, res);
   }, 
 
-  facebookCB: function (req, res) {
-    passport.authenticate('facebook', { 
-      failureRedirect: '/login' 
-    },
-    function (req, res) {
-      res.redirect('/account');
-    })(req, res);
+  facebookCallback: function (req, res) {
+    passport.authenticate('facebook', {  successRedirect: '/',
+                                         failureRedirect: '/login',
+                                         failureFlash: true })(req, res, function() {
+                                           res.redirect('/');
+                                         });
   },
 
   logout: function (req, res) {
