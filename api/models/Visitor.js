@@ -17,6 +17,10 @@ module.exports = {
       unique: true
     },
 
+    oauthID: {
+      type: 'Number'
+    },
+
     isActive: {
       type: 'Boolean',
       defaultsTo: true 

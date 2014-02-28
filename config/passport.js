@@ -12,6 +12,7 @@ var config = require('./oauth.js'),  // create your own oauth.js based on config
   bcrypt = require('bcrypt');
 
 passport.serializeUser(function (visitor, done) {
+  console.log('Serilized: ' + visitor.fname + ' ' + visitor.lname);
   done(null, visitor[0].id);
 });
 
@@ -45,17 +46,40 @@ passport.use(new LocalStrategy(
   })
 );
 
-passport.use(new FacebookStrategy({
-    clientID: config.facebook.clientID,
-    clientSecret: config.facebook.clientSecret,
-    callbackURL: config.facebook.callbackURL
+passport.use(new FacebookStrategy({ clientID: config.facebook.clientID,
+                                    clientSecret: config.facebook.clientSecret,
+                                    callbackURL: config.facebook.callbackURL
   },
   function (accessToken, refreshToken, profile, done) {
-    process.nextTick(function () {
-      return done(null, profile);
+    console.log(JSON.stringify(profile));
+
+    Visitor.findByID({ oauthID: profile.id }, function (err, visitor) {
+      if (err) { console.log(err); }
+      if (!err && visitor !== null) {
+        console.log('Visitor is not null, and no errors.');
+        done(null, visitor);
+      } else {
+        console.log('Attempting to create new Visitor in Ottemo');
+        var tmpEmail = profile.username + '@facebook.com';
+        visitor = new Visitor({
+          email: tmpEmail,
+          oauthID: profile.id,
+          fname: profile.first_name,
+          lname: profile.last_name
+        });
+        visitor.save(function (err) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log('saving visitor: ' + profile.displayName);
+            done(null, visitor);
+          }
+        });
+      }
     });
   }
 ));
+  
 
 
 module.exports = {

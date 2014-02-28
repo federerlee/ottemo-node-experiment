@@ -26,7 +26,7 @@ module.exports = {
       console.log(JSON.stringify(visitor));
       if ((err) || (!visitor)) {
         res.redirect('/login');
-        console.log('Houston, we have a problem: ' + err);
+        console.log('Houston, we have a problem: ' + info);
         return;
       }
       req.logIn(visitor, function (err) {
@@ -46,9 +46,9 @@ module.exports = {
   facebookCallback: function (req, res) {
     passport.authenticate('facebook', {  successRedirect: '/',
                                          failureRedirect: '/login',
-                                         failureFlash: true })(req, res, function() {
-                                           res.redirect('/');
-                                         });
+                                         failureFlash: true })(req, res, function () {
+                                            res.redirect('/');
+                                          });
   },
 
   logout: function (req, res) {
