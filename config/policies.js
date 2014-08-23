@@ -13,7 +13,7 @@
 
 
 module.exports.policies = {
-  '*': 'authenticated',
+  '*': 'isAuthenticated',
   VisitorController: {
     '*': true
   },

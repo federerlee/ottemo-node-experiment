@@ -1,6 +1,6 @@
 # Ottemo Community Server
 
-an ambitious open-source ecommerce solution based on Node.js and built on the excellent [Sails Framework](http://sailsjs.org)
+Ottemo is democratizing ecommerce for the Small and Medium Enterprise, an ambitious open-source ecommerce solution based on Node.js and built on the excellent [Sails Framework](http://sailsjs.org)
 
 ## Ottemo Installation Instructions and Getting Started
 
@@ -68,7 +68,7 @@ to:
     brew install git-flow
     brew install hub
     eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
-    npm install -g mocha bower
+    npm install -g mocha 
     gem install compass  // you must have ruby 1.9.x or 2.x.x installed
 
 #### Debian based Linux
@@ -85,9 +85,9 @@ to:
     chmod +x ~/bin/hub
     eval "$(hub alias -s)"  // add this to your .bashrc or .bash_profile
 
-    npm install -g mocha bower
+    npm install -g mocha 
 
-## Download and Setup Ottemo
+## To Download and Setup Ottemo
 
 ### Clone the Repository
     git clone https://github.com/ottemo/ottemo.git ottemo
