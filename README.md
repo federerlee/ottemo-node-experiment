@@ -1,6 +1,6 @@
 # Deprecated
 
-Ottemo is democratizing ecommerce for the Small and Medium Enterprise.  This repository was experimental and allowed us to validate our intentions.  We have since moved to a different platform and will be releasing our new platform in coming weeks.  
+Ottemo is democratizing ecommerce for the Small and Medium Enterprise.  This repository was experimental and allowed us to validate our intentions.  We have since moved to a different platform and will be releasing our new platform in the coming weeks. For more information, please visit our [website](http://ottemo.io).
 
 ## Ottemo Installation Instructions and Getting Started
 
